@@ -23,15 +23,16 @@ const nonOlympiadsButton = document.getElementById("nonOlympiads");
 
 showFormInputs()
 showRemoveList()
-
 modalProp.addEventListener('submit', ev => {
   ev.preventDefault();
   const fd = new FormData(ev.target);
   const data = Object.fromEntries(fd);
 
-  db.execute(`ALTER TABLE Students ADD ${data.nameProp} TEXT DEFAULT ${data.dateProp}`,
+  const columnName = translit(data.nameProp).toLowerCase();
+
+  db.execute(`ALTER TABLE Students ADD ${columnName} TEXT DEFAULT ${data.dateProp}`,
     function (t, result) {
-      Student.addProperty(data.nameProp, data.nameProp);
+      Student.addProperty(columnName, data.nameProp);
       localStorage.setItem('props', JSON.stringify(Student.getProperty()))
       showFormInputs();
       modalProp.style.display = 'none'
@@ -184,4 +185,35 @@ function showFormInputs() {
     )
     mount(formInputs, input)
   }
+}
+
+function translit(word){
+  var answer = '';
+  var converter = {
+    'а': 'a',    'б': 'b',    'в': 'v',    'г': 'g',    'д': 'd',
+    'е': 'e',    'ё': 'e',    'ж': 'zh',   'з': 'z',    'и': 'i',
+    'й': 'y',    'к': 'k',    'л': 'l',    'м': 'm',    'н': 'n',
+    'о': 'o',    'п': 'p',    'р': 'r',    'с': 's',    'т': 't',
+    'у': 'u',    'ф': 'f',    'х': 'h',    'ц': 'c',    'ч': 'ch',
+    'ш': 'sh',   'щ': 'sch',  'ь': '',     'ы': 'y',    'ъ': '',
+    'э': 'e',    'ю': 'yu',   'я': 'ya',
+
+    'А': 'A',    'Б': 'B',    'В': 'V',    'Г': 'G',    'Д': 'D',
+    'Е': 'E',    'Ё': 'E',    'Ж': 'Zh',   'З': 'Z',    'И': 'I',
+    'Й': 'Y',    'К': 'K',    'Л': 'L',    'М': 'M',    'Н': 'N',
+    'О': 'O',    'П': 'P',    'Р': 'R',    'С': 'S',    'Т': 'T',
+    'У': 'U',    'Ф': 'F',    'Х': 'H',    'Ц': 'C',    'Ч': 'Ch',
+    'Ш': 'Sh',   'Щ': 'Sch',  'Ь': '',     'Ы': 'Y',    'Ъ': '',
+    'Э': 'E',    'Ю': 'Yu',   'Я': 'Ya',   ' ': '_',
+  };
+
+  for (var i = 0; i < word.length; ++i ) {
+    if (converter[word[i]] == undefined){
+      answer += word[i];
+    } else {
+      answer += converter[word[i]];
+    }
+  }
+
+  return answer;
 }
