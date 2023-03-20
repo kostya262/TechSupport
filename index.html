@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" type="module"></script>
+    
+    <title>Service</title>
+</head>
+<body>
+    <div class="modal modalProp" id="modalProp">
+        <form action="#" class="form-prop modal__wrapper">
+            <div class="form-prop__input">
+                <label for="nameProp">Название нового свойства </label>
+                <input id="nameProp" type="text" name="nameProp"/>
+            </div>
+            <div class="form-prop__input">
+                <label for="dateProp">Значение по умолчанию</label>
+                <input id="dateProp" type="text" name="dateProp"/>
+            </div>
+            <button class="modal__button" type="submit">Добавить</button>
+        </form>
+    </div>
+    <div class="modal modal-success" id="modal-success">
+        <div class="modal__wrapper">
+            <div class="modal__title">Выполнено</div>
+            <div class="modal__text">Данные о пользователе успешно добавлены</div>
+            <button class="modal__button" type="button">Закрыть</button>
+        </div>
+    </div>
+    <div class="container">
+        <div class="wrapper">
+            <form action="#" class="form" id="form">
+                <div class="form__inputs"></div>
+                <div class="form__buttons">
+                    <button type="submit" id="addStudent" class="form__button">Добавить ученика</button>
+                    <button type="button" id="clearForm" class="form__button">Очистить форму</button>
+
+                    <button type="button" id="addProperty" class="form__button">Добавить новое свойство</button>
+                    <button type="button" id="showStudents" class="form__button">Просмотр учеников</button>
+                    <button type="button" id="nonOlympiads" class="form__button">Не олимпиадники</button>
+                </div>
+            </form>
+            <button type="button" id="removeStudent">Удалить запись</button>
+            <select name="remove-list" id="removeList">
+                <option value="header">IDs</option>
+            </select>
+            <table class="table" id="table">
+                <thead>
+                    <tr class="table__header">
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
