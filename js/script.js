@@ -179,10 +179,19 @@ function showFormInputs() {
   })
 
   for (const prop of Object.keys(props)) {
-    const input = el('.form__input',
-      el('label', {'for': prop, innerHTML: props[prop].value}),
-      el('input', {id: prop, name: prop, type: props[prop].type, value: props[prop].type === 'checkbox' ? 'Да' : ''})
-    )
+    let input;
+    if (props[prop].type === 'checkbox') {
+      input = el('.form__input.mt-3',
+          el('input.form-check-input', {id: prop, name: prop, type: props[prop].type, value: 'Да'}),
+          el('label.form-check-label.ms-2', {'for': prop, innerHTML: props[prop].value}),
+      )
+    } else {
+      input = el('.form__input.mt-3',
+          el('label.form-label', {'for': prop, innerHTML: props[prop].value}),
+          el('input.form-control', {id: prop, name: prop, type: props[prop].type})
+      )
+    }
+
     mount(formInputs, input)
   }
 }

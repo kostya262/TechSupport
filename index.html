@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/style.css">
     <script src="js/script.js" type="module" defer="defer"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     
     <title>Service</title>
 </head>
@@ -33,19 +35,21 @@
             <form action="#" class="form" id="form">
                 <div class="form__inputs"></div>
                 <div class="form__buttons">
-                    <button type="submit" id="addStudent" class="form__button">Добавить ученика</button>
-                    <button type="button" id="clearForm" class="form__button">Очистить форму</button>
+                    <button type="submit" id="addStudent" class="form__button btn btn-primary my-2 mx-2">Добавить ученика</button>
+                    <button type="button" id="clearForm" class="form__button btn btn-danger my-2 mx-2">Очистить форму</button>
 
-                    <button type="button" id="addProperty" class="form__button">Добавить новое свойство</button>
-                    <button type="button" id="showStudents" class="form__button">Просмотр учеников</button>
-                    <button type="button" id="nonOlympiads" class="form__button">Не олимпиадники</button>
+                    <button type="button" id="addProperty" class="form__button btn btn-primary my-2 mx-2">Добавить новое свойство</button>
+                    <button type="button" id="showStudents" class="form__button btn btn-primary my-2 mx-2">Просмотр учеников</button>
+                    <button type="button" id="nonOlympiads" class="form__button btn btn-primary my-2 mx-2">Не олимпиадники</button>
                 </div>
             </form>
-            <button type="button" id="removeStudent">Удалить запись</button>
-            <select name="remove-list" id="removeList">
-                <option value="header">IDs</option>
-            </select>
-            <table class="table" id="table">
+            <div class="mt-2 row">
+                <button class="btn btn-danger col-3" type="button" id="removeStudent">Удалить запись</button>
+                <select name="remove-list" id="removeList" class="form-select col-3 ms-3 w-25">
+                    <option value="header">IDs</option>
+                </select>
+            </div>
+            <table class="table mt-3" id="table">
                 <thead>
                     <tr class="table__header">
                     </tr>
